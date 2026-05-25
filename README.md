@@ -1,60 +1,217 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=18828559&assignment_repo_type=AssignmentRepo)
-# LV 1 zadatak - Web stranica na danu temu
+# 🎬 Videoteka - Web aplikacija za upravljanje filmovima
 
-### LINK: (POSTAVITI LINK STRANICE)
+## O aplikaciji
 
-<hr />
+Videoteka je web-aplikacija za upravljanje filmskom kolekcijom, ocjenjivanje filmova i upravljanje personalnom videotekom. Aplikacija je napravljena sa **PHP-om** i **MySQL** bazom podataka.
 
-## Opis zadatka
+## Funkcionalnosti
 
-Izradite vlastitu web stranicu prema primjeru dizajna početne stranice na desktop rezoluciji. Potrebno je izraditi dizajn u HTML-u i CSS-u bez korištenja JavaScripta.
+✅ **Autentifikacija korisnika**
+- Registracija novih korisnika
+- Sigurna prijava sa heširanim lozinkama (bcrypt)
+- Dva tipa korisnika: obični korisnici i administratori
 
-#### Potrebno:
+✅ **Upravljanje filmovima**
+- Prikaz svih dostupnih filmova
+- Filtriranje po žanru, godini, zemlji
+- Pretraživanje filmova
 
-- [ ] Kodirati HTML i CSS prema navedenom dizajnu za desktop rezoluciju
-- [ ] Potrebno je dodatno nadograditi HTML i CSS kako bi stranica bila responzivnu na Tablet i Mobile rezolucijama sa svim gore navedenim elementima u dizajnu (Media Query)
-- [ ] Optimizirati stranicu - optimizirati slike, ubaciti lazyload, koristiti različite slike na desktop i mobile rezolucijama (testirati putem Google Speed Testa)
-- [ ] Prilagoditi HTML kod da odgovara SEO značajkama
-- [ ] Uključiti ARIA atribute kako bi prilagodili web stranicu čitačima zaslona (**za provjeru koristiti ChromeVox u Google Chrome-u**)
-- [ ] Kreirati tablicu s podacima i grafikone (pie ili histogram - koristiti ovisno o ekranu (responzivnost))
-- [ ] Kreirati stranicu s fotografijama (statički) - slike.html (dani su predložak i css)
+✅ **Ocjenjivanje filmova**
+- Ocjenjivanje filmova ocjenom od 1 do 5 zvjezdica
+- Prikaz prosječne ocjene svakog filma
+- Pregled svih ocjena za film
 
-Napravljen zadatak potrebno je postaviti na internet koristeći neki poslužitelj i gore na "LINK:" dodati poveznicu na navedeni zadatak. 
+✅ **Moja videoteka**
+- Dodavanje/uklanjanje filmova iz personalne videoteke
+- Pregled svih filmova u videoteci
+- Statistika (broj filmova, ukupno sati gledanja)
+- Upozorenja za filmove sa niskој ocjenom (< 5.0)
 
+✅ **Admin panel**
+- Dodavanje novih filmova
+- Uređivanje filmova
+- Brisanje filmova
 
-**NAPOMENA**: svi detalji su objašnjeni u uputama za rješavanje zadatka!
+## Instalacija
 
-Popis poslužiteljskih usluga:
+### Preduvjeti
 
-https://github.com/anandrmedia/heroku-free-alternatives
+- **PHP** 7.4 ili novije
+- **MySQL** 5.7 ili novije (ili MariaDB)
+- **Apache** sa mod_php ili **Nginx** sa PHP-FPM
+- Ili **XAMPP** koji sadrži sve navedene komponente
 
-ili koristiti Github: https://www.youtube.com/watch?v=OltY8JIaP-4
+### Koraci instalacije
 
-### Korisni linkovi prilikom rješavanja zadatka
+1. **Preuzmite ili klonirajte repozitorij:**
+   ```bash
+   git clone https://github.com/Boki147/Web-lv2.git
+   cd agents-web-app-movie-management-php-mysql
+   ```
 
-#### Cheat sheets
-- HTML/CSS/JS https://htmlcheatsheet.com/
-- EMMET https://docs.emmet.io/cheat-sheet/
+2. **Postavite bazu podataka:**
+   - Ako koristite **XAMPP**:
+     1. Pokrenite Apache i MySQL iz XAMPP Control Panel-a
+     2. Otvorite `http://localhost/phpmyadmin`
+     3. Prijavite se (obično: korisničko ime: `root`, lozinka: prazna)
+     4. Pokrenut ćete SQL datoteku: Kliknite na "Import", odaberite `database.sql` i pokrente
 
-#### CSS - općenito
-- https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started
-- https://css-tricks.com/where-do-you-learn-html-css-in-2020/
-- Box model - https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
-- Position - https://developer.mozilla.org/en-US/docs/Web/CSS/position
-- Display - https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   - Ako koristite **direktno PHP/MySQL**:
+     ```bash
+     mysql -u root -p < database.sql
+     ```
+     
+   - **Alternativno** (najjednostavnije):
+     1. Pokrenite PHP server: `php -S localhost:8000`
+     2. Otvorite `http://localhost:8000/setup.php` u pregledniku
+     3. Kliknite na dugme "Inicijaliziraj bazu podataka"
 
-#### CSS - responzivni web dizajn
-- https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
-- https://kinsta.com/blog/responsive-web-design/
-- https://www.youtube.com/watch?v=p0bGHP-PXD4
+3. **Pokrenite aplikaciju:**
+   ```bash
+   php -S localhost:8000
+   ```
+   
+   Ili koristite XAMPP i stavite datoteke u `htdocs` folder.
 
-#### CSS - Grid i Flexbox
-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
-- Grid - https://www.youtube.com/watch?v=0-DY8J_skZ0
-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-- https://www.youtube.com/watch?v=JJSoEo8JSnc
-- Kako kreirati svoj grid sistem - https://zellwk.com/blog/responsive-grid-system/
+4. **Otvorite aplikaciju:**
+   ```
+   http://localhost:8000
+   http://localhost/videoteka (ako koristite XAMPP)
+   ```
 
-#### ARIA 
-- https://www.w3schools.com/accessibility/index.php
+## Korištenje
 
+### Prijava kao običan korisnik
+1. Kliknite na "Registracija"
+2. Unesite podatke i kreirajte račun
+3. Prijavite se sa novim računom
+
+### Prijava kao administrator
+- **Korisničko ime:** `admin`
+- **Lozinka:** `admin123`
+
+### Meni navigacije
+
+- **Početna** - Prikaz statistike i izdvojenih filmova
+- **Filmovi** - Prikaz svih dostupnih filmova sa mogućnošću filtriranja
+- **Moja videoteka** - Prikaz i upravljanje vašom personalnom kolekcijom
+- **Admin panel** (samo za admina) - Upravljanje svim filmovima
+
+## Struktura datoteka
+
+```
+.
+├── index.php              # Početna stranica
+├── register.php           # Registracija korisnika
+├── login.php              # Prijava korisnika
+├── logout.php             # Odjava korisnika
+├── films.php              # Prikaz i filtriranje filmova
+├── film.php               # Detalji filma i ocjenjivanje
+├── myvideoteka.php        # Moja videoteka
+├── dashboard.php          # Admin panel
+├── setup.php              # Inicijalizacija baze podataka
+├── db.php                 # Konekcija na bazu
+├── auth.php               # Autentifikacijske funkcije
+├── functions.php          # Pomoćne funkcije
+├── style.css              # Stilovi stranica
+├── database.sql           # SQL skripta za bazu (za izvoz/backup)
+├── package.json           # Metapodaci projekta
+└── README.md              # Ovaj fajl
+```
+
+## Tehnologije
+
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript
+- **Backend:** PHP 7.4+
+- **Baza podataka:** MySQL 5.7+
+- **Sigurnost:**
+  - Prepared statements za zaštitu od SQL injection-a
+  - Password hashing sa bcrypt (PASSWORD_BCRYPT)
+  - Sesije za upravljanje korisnicima
+  - Sanitizacija unosa
+
+## Sigurnosne mere
+
+1. **Zaštita od SQL injection-a** - korišćeni prepared statements
+2. **Hashiranje lozinki** - korishćen password_hash() sa BCRYPT algoritmom
+3. **Sesije** - upravljanje korisničkim stanjem
+4. **Sanitizacija** - svi korisnički unosi se sanitizuju sa htmlspecialchars()
+5. **Validacija** - serverska validacija svih podataka
+
+## Baza podataka
+
+### Tablice
+
+- **users** - Registrovani korisnici
+- **films** - Dostupni filmovi
+- **ratings** - Ocjene korisnika
+- **myvideoteka** - Filmovi u videoteci korisnika
+- **warnings** - Upozorenja za niske ocjene
+
+## Deployment
+
+Za deployment na produkciju (npr. Railway, Heroku, itd.):
+
+1. **Postavite MySQL bazu na hosting servisu**
+2. **Ažurirajte kredencijale u `db.php`:**
+   ```php
+   define('DB_HOST', 'your-host.example.com');
+   define('DB_USER', 'your-username');
+   define('DB_PASS', 'your-password');
+   define('DB_NAME', 'your-database');
+   ```
+3. **Pokrente `setup.php` ili manual SQL skripta na produkciji**
+4. **Uploadujte sve datoteke na hosting**
+
+## Testiranje
+
+### Test scenariji
+
+1. **Registracija:**
+   - Kreirajte novi račun sa različitim podacima
+   - Provjerite validaciju (kraće od 3 karaktera, itd.)
+
+2. **Prijava:**
+   - Prijavite se sa novim računom
+   - Pokušajte sa pogrešnom lozinkom
+
+3. **Filmovi:**
+   - Filtrirajte po različitim kriterijumima
+   - Pretražite filmove
+   - Otvorite detalje filma
+
+4. **Ocjenjivanje:**
+   - Ocijenite film
+   - Ponovno ocijenite (trebao bi se ažurirati)
+
+5. **Videoteka:**
+   - Dodajte filmove
+   - Uklonite filmove
+   - Provjerite upozorenja za niske ocjene
+
+6. **Admin panel:**
+   - Prijavite se kao admin
+   - Dodajte novi film
+   - Ažurirajte film
+   - Obrišite film
+
+## Bugovi i problemi
+
+Ako naiđete na problem:
+
+1. Provjerite da je MySQL servis pokrenut
+2. Provjerite kredencijale u `db.php`
+3. Očistite cache preglednika (Ctrl+Shift+Del)
+4. Provjerite PHP error log
+
+## Licence
+
+ISC License
+
+## Autor
+
+Kreirano kao dio laboratorijske vježbe 4.
+
+---
+
+**Napomena:** Za više informacija o laboratorijskoj vježbi, pogledajte opis u zadatku.

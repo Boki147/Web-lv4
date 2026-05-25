@@ -1,23 +1,20 @@
-const express = require('express');
-const fs = require('fs');
-const path = require('path');
+#!/usr/bin/env php
+<?php
+/**
+ * PHP Built-in Server Launcher
+ * Zamjena za Express server - koristi PHP built-in server
+ */
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+$host = 'localhost';
+$port = 8000;
 
+// Pokreni PHP server
+echo "🚀 Pokretanje PHP servera na http://$host:$port\n";
+echo "Pritisnite Ctrl+C da stoprirate server.\n\n";
 
-app.use(express.static('public'));
+passthru("php -S $host:$port");
+?>
 
-
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-
-app.get('/', (req, res) => {
-  res.redirect('/slike');
-});
-
-// GALERIJA 
 app.get('/slike', (req, res) => {
   const dataPath = path.join(__dirname, 'images.json');
   const images = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));

@@ -1,0 +1,38 @@
+# Zavisnosti
+node_modules/
+vendor/
+composer.lock
+
+# Okruženje
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Privremene datoteke
+*.log
+*.tmp
+*.cache
+
+# Baza podataka
+*.db
+*.sqlite
+*.sqlite3
+
+# PHP specifično
+.php_cs.cache
+
+# Generisane datoteke
+generate_hash.*
+old/
+
+# OS specifično
+Thumbs.db
+.DS_Store
